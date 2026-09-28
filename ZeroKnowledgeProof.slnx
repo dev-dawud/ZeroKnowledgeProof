@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="ZeroKnowledgeProof.vcxproj" Id="96eb44c8-564a-49e0-bdcc-fe001d031448" />
+</Solution>

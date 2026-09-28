@@ -1,0 +1,25 @@
+﻿ .vs/
+x64/
+debug/
+release/
+*.ipch
+*.sdf
+*.pdb
+*.obj
+*.log
+*.tlog
+*.lastbuildstate
+*.idb
+*.db
+*.opendb
+*.vsidx
+
+.vs/
+x64/
+*.user
+*.suo
+
+Debug/
+Release/
+
+vcpkg/
