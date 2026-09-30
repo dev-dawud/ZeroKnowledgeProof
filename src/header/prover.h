@@ -1,5 +1,8 @@
 #pragma once
 
+#pragma warning(disable : 4146)
+#pragma warning(disable : 4244)
+
 #include <gmp.h>
 
 class Prover {

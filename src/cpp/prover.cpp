@@ -62,7 +62,7 @@
         // s = r + c * x % q
         // s -> verifier
 
-        mpz_init_set_ui(gmp_c, c);
+        mpz_set_ui(gmp_c, c);
 
         // tmp = c * x
         mpz_mul(gmp_tmp, gmp_c, gmp_x);
