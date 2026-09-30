@@ -5,95 +5,14 @@
 #include <string>
 #include <random>
 
-// large Numbers
-#include <gmp.h>
+#include "header/prover.h"
 
-// Global Variables
 int p = 23;
 int q = 11;
 int g = 2;
 int x = 4;
 
-class Prover {
-public:
 
-    mpz_t gmp_p, gmp_g, gmp_x, gmp_y, gmp_t, gmp_r , gmp_s, gmp_c, gmp_tmp, gmp_q;
-    
-    Prover() {
-
-        // random numbers initiliazion
-        int r = 0;
-
-        std::random_device rd;
-        std::mt19937 generator(rd());
-
-        std::uniform_int_distribution<int> dist(1, 10);
-
-        r = dist(generator);
-
-        mpz_init_set_ui(gmp_r, r);
-
-        //initialize new variables because int doesnt work with gmp
-        mpz_init_set_ui(gmp_p, p);
-        mpz_init_set_ui(gmp_g, g);
-        mpz_init_set_ui(gmp_x, x);
-        mpz_init_set_ui(gmp_q, q);
-
-        mpz_init(gmp_y);
-        mpz_init(gmp_t);
-        mpz_init(gmp_s);
-        mpz_init(gmp_tmp);
-
-       
-    }
-
-    int calculatePBkey() {
-
-        // calculates: y = (g^x) % p
-        mpz_powm(gmp_y, gmp_g, gmp_x, gmp_p);
-
-        std::cout << mpz_get_ui(gmp_y) << std::endl;
-
-        int y = mpz_get_ui(gmp_y);
-
-        return y;
-
-    }
-
-    int commitment() {
-
-        // calculates: t = (g^r) % p
-        mpz_powm(gmp_t, gmp_g, gmp_r, gmp_p);
-
-        std::cout << mpz_get_ui(gmp_t) << std::endl;
-
-        int t = mpz_get_ui(gmp_t);
-
-        return t;
-
-    }
-
-    int response(int& c) {
-
-        // s = r + c * x % q
-        // s -> verifier
-
-        mpz_init_set_ui(gmp_c, c);
-        
-        mpz_mul(gmp_tmp, gmp_c, gmp_x);   // tmp = c * x
-        mpz_add(gmp_s, gmp_r, gmp_tmp);   // s = r  + tmp
-
-
-        mpz_mod(gmp_s, gmp_s, gmp_q);
-
-        std::cout << mpz_get_ui(gmp_s) << std::endl;
-        
-        int s = mpz_get_ui(gmp_s);
-
-        return s;
-    }
-
-};
 
 class Verifier {
 public:
